@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -27,7 +29,7 @@ public class Quadric extends gnu.x11.extension.glx.Application {
   private int display_list;
 
 
-  public Quadric (String [] args) {
+  public Quadric (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "lighting model with color",
@@ -142,7 +144,7 @@ public class Quadric extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Quadric (args).exec ();
   }
 }

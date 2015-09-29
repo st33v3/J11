@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.event.ButtonPress;
 import gnu.x11.event.Event;
 import gnu.x11.event.KeyPress;
@@ -15,7 +17,7 @@ import gnu.x11.event.KeyPress;
  * help output</a>
  */
 public class SendEvent extends Graphics {
-  public SendEvent (String [] args) {
+  public SendEvent (String [] args) throws IOException {
     super (args, 100, 50);
 
     about ("0.1", "test sending synthetic events",
@@ -49,7 +51,7 @@ public class SendEvent extends Graphics {
   }
 
     
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new SendEvent (args).exec ();
   }
 }

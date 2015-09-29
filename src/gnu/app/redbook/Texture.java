@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -18,7 +20,7 @@ public class Texture extends gnu.x11.extension.glx.Application {
   private int texture;  
 
 
-  public Texture (String [] args) {
+  public Texture (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "checkerboard texture",
@@ -103,7 +105,7 @@ public class Texture extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Texture (args).exec ();
   }
 }

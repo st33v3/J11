@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -127,7 +129,7 @@ public class BitmapFont extends gnu.x11.extension.glx.Application {
   private int display_list_offset;
   
 
-  public BitmapFont (String [] args) {
+  public BitmapFont (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "bitmap font",
@@ -192,7 +194,7 @@ public class BitmapFont extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new BitmapFont (args).exec ();
   }
 }

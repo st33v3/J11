@@ -272,7 +272,7 @@ public class RequestOutputStream extends FilterOutputStream {
         try {
           out.write (buffer, 0, index);
         } catch (IOException ex) {
-          handle_exception (ex);
+          display.handle_io_exception (this, ex);
         }
         index = 0;
         request_index = 0;
@@ -281,7 +281,7 @@ public class RequestOutputStream extends FilterOutputStream {
       out.flush ();
 
     } catch (IOException ex) {
-      handle_exception (ex);
+      display.handle_io_exception (this, ex);
     }
   }
 
@@ -478,15 +478,6 @@ public class RequestOutputStream extends FilterOutputStream {
     int len = (index + 3) / 4;
     buffer [2] = (byte) (len >> 8);
     buffer [3] = (byte) (len);
-  }
-
-  /**
-   * Handles exceptions that my occur during IO operations.
-   *
-   * @param ex the exception to handle
-   */
-  private void handle_exception (Throwable ex) {
-    ex.printStackTrace();
   }
 
   public void increase_length (int i) {

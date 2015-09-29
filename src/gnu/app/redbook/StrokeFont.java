@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -56,7 +58,7 @@ public class StrokeFont extends gnu.x11.extension.glx.Application {
   };
     
 
-  public StrokeFont (String [] args) {
+  public StrokeFont (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "stroke font",
@@ -159,7 +161,7 @@ public class StrokeFont extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new StrokeFont (args).exec ();
   }
 }

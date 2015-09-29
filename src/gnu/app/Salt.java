@@ -1,5 +1,7 @@
 package gnu.app;
 
+import java.io.IOException;
+
 import gnu.x11.Window;
 import gnu.x11.event.Event;
 import gnu.x11.event.KeyPress;
@@ -24,7 +26,7 @@ import gnu.x11.event.KeyPress;
  * help output</a>
  */
 public class Salt extends gnu.x11.Application {
-  public Salt (String [] args) {
+  public Salt (String [] args) throws IOException {
     super (args);
 
     String res_name = option.string ("res-name",
@@ -77,7 +79,7 @@ public class Salt extends gnu.x11.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Salt (args);
   }
 }

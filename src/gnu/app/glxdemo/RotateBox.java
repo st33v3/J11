@@ -1,6 +1,9 @@
 package gnu.app.glxdemo;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.x11.Input;
 
 
@@ -28,7 +31,7 @@ public class RotateBox extends gnu.x11.extension.glx.Application {
   private float z_angle = 112.0f;
 
 
-  public RotateBox (String [] args) {
+  public RotateBox (String [] args) throws IOException {
     super (args, BUTTON_PRESS_BIT | RESIZE_BIT);
 
     about ("0.1", "box for rotation",
@@ -125,7 +128,7 @@ public class RotateBox extends gnu.x11.extension.glx.Application {
   }
    
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new RotateBox (args).exec ();
   }
 }

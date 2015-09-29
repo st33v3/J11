@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.util.Misc;
 import gnu.x11.Atom;
 import gnu.x11.Font;
@@ -26,7 +28,7 @@ import gnu.x11.extension.glx.GL;
  * help output</a>
  */
 public class Info extends gnu.x11.Application {
-  public Info (String [] args) { 
+  public Info (String [] args) throws IOException { 
     super (args);
 
     boolean print_keysyms = option.booleann ("print-keysyms",
@@ -170,7 +172,7 @@ public class Info extends gnu.x11.Application {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Info (args);
   }
 }

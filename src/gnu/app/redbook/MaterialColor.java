@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -30,7 +32,7 @@ public class MaterialColor extends gnu.x11.extension.glx.Application {
     = {0.5f, 0.5f, 0.5f, 1.0f};
 
 
-  public MaterialColor (String [] args) {
+  public MaterialColor (String [] args) throws IOException {
     super (args, BUTTON_PRESS_BIT | KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "material color",
@@ -119,7 +121,7 @@ public class MaterialColor extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new MaterialColor (args).exec ();
   }
 }

@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -13,7 +15,7 @@ import gnu.x11.extension.glx.GL;
  * help output</a>
  */
 public class Hello extends gnu.x11.extension.glx.Application {
-  public Hello (String [] args) {
+  public Hello (String [] args) throws IOException {
     super (args, 0);
 
     about ("0.1", "hello world",
@@ -47,7 +49,7 @@ public class Hello extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Hello (args).exec ();
   }
 }

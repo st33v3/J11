@@ -1,5 +1,6 @@
 package gnu.app.displayhack;
 
+import java.io.IOException;
 
 /** 
  * Simulate ink-blot patterns. It draws random patterns reminiscent of the
@@ -21,7 +22,7 @@ public class Rorschach extends DisplayHack {
   public boolean x_symmetry, y_symmetry;
 
 
-  public Rorschach (String [] args) { 
+  public Rorschach (String [] args) throws IOException { 
     super (args, true, true, true, 16, 2000);
 
     depth = option.intt ("depth", "level of details", 10000);
@@ -69,7 +70,7 @@ public class Rorschach extends DisplayHack {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Rorschach (args).exec (); 
   }
 }

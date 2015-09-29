@@ -88,10 +88,10 @@ public class Display {
 
 
   // resources
-  public Hashtable resources = new Hashtable (257);
+  public Hashtable<Integer, Object> resources = new Hashtable<> (257);
   public int resource_index;
-  public Hashtable atom_ids = new Hashtable (257);
-  public Hashtable atom_names = new Hashtable (257);
+  public Hashtable<Integer, Atom> atom_ids = new Hashtable<> (257);
+  public Hashtable<String, Atom> atom_names = new Hashtable<> (257);
   
 
   // xcmisc
@@ -130,8 +130,9 @@ public class Display {
 
   /**
    * #Display(String, int, int)
+ * @throws IOException 
    */
-  public Display () {
+  public Display () throws IOException {
     this ("", 0, 0);
   }
 
@@ -185,16 +186,18 @@ public class Display {
 
   /**
    * #Display(String, int, int)
+ * @throws IOException 
    */
-  public Display (Name name) {        
+  public Display (Name name) throws IOException {        
     this (name.hostname, name.display_no, name.screen_no);
   }
 
 
   /**
    * #Display(String, int, int)
+ * @throws IOException 
    */
-  public Display (String hostname, int display_no) {
+  public Display (String hostname, int display_no) throws IOException {
     this (hostname, display_no, 0);
   }
 
@@ -209,36 +212,35 @@ public class Display {
    * @param display_no the display number
    * @param screen_no the screen number
    */
-  public Display (Socket socket, String hostname, int display_no,
-                  int screen_no) {
+  public Display (Socket socket, String hostname, int display_no, int screen_no) throws IOException {
     default_screen_no = screen_no;
     this.hostname = hostname;
     this.display_no = display_no;
     this.socket = socket;
-    init_streams ();
-    init();
+    try {
+    	init_streams();
+    	init();
+    } catch (Throwable t) {
+    	try {
+    		socket.close();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	throw t;
+    }
   }
 
   /**
    * @see <a href="XOpenDisplay.html">XOpenDisplay</a>
    */
-  public Display (String hostname, int display_no, int screen_no) {
-    default_screen_no = screen_no;
-    this.display_no = display_no;
-    this.hostname = hostname;
-    try {
-      socket = new Socket (hostname, 6000 + display_no);
-    } catch (IOException ex) {
-      handle_exception (ex);
-    }
-    init_streams ();
-    init ();
+  public Display (String hostname, int display_no, int screen_no) throws IOException {
+	  this(new Socket (hostname, 6000 + display_no), hostname, display_no, screen_no);
   }
 
-  private void init() {
+  private void init() throws IOException {
 
     // authorization protocol
-    XAuthority xauth = get_authority ();
+    XAuthority xauth = get_authority();
 
     byte[] auth_name;
     byte[] auth_data;
@@ -370,8 +372,7 @@ public class Display {
   /**
    * @see <a href="XListFontsWithInfo.html">XListFontsWithInfo</a>
    */
-  public Data fonts_with_info (String pattern, 
-    int max_name_count) {
+  public Data fonts_with_info (String pattern, int max_name_count) {
 
     // FIXME: Implement.
     return null;
@@ -960,11 +961,11 @@ public class Display {
   public void close () {
     // FIXME: Implement more sensible shutdown.
     try {
-    in.close ();
-    out.close ();
-    socket.close ();
+      in.close ();
+      out.close ();
+      socket.close ();
     } catch (IOException ex) {
-      handle_exception (ex);
+      ex.printStackTrace();
     }
     connected = false;
   }
@@ -1102,21 +1103,18 @@ public class Display {
    * Fetches the XAuthority that matches this display.
    *
    * @return the XAuthority that matches this display
+   * @throws IOException
+   * @throws UnknownHostException
    */
-  private XAuthority get_authority () {
+  private XAuthority get_authority () throws UnknownHostException, IOException {
 
     XAuthority[] auths = XAuthority.get_authorities();
 
     // Fetch hostname.
-    if (hostname == null || hostname.equals("")
-        ||hostname.equals ("localhost")) {
+    if (hostname == null || hostname.equals("") || hostname.equals ("localhost")) {
       // Translate localhost hostnames to the real hostname of this host.
-      try {
-        InetAddress local = InetAddress.getLocalHost ();
-        hostname = local.getHostName ();
-      } catch (UnknownHostException ex) {
-        ex.printStackTrace();
-      }
+      InetAddress local = InetAddress.getLocalHost ();
+      hostname = local.getHostName ();
     }
 
     // Fetch display no.
@@ -1168,25 +1166,22 @@ public class Display {
 
   /**
    * Initializes the input and output streams.
+ * @throws IOException 
    */
-  private void init_streams () {
+  private void init_streams () throws IOException {
     
-    try {
-      // TODO: Evaluate if we gain performance by using BufferedOutputStream
-      // here.
-      OutputStream o = socket.getOutputStream ();
-      //BufferedOutputStream buf_out = new BufferedOutputStream (o, 512);
-      out = new RequestOutputStream (o, this);
+    // TODO: Evaluate if we gain performance by using BufferedOutputStream
+    // here.
+    OutputStream o = socket.getOutputStream ();
+    //BufferedOutputStream buf_out = new BufferedOutputStream (o, 512);
+    out = new RequestOutputStream (o, this);
 
-      // Create buffered response input stream.
-      InputStream sock_in = socket.getInputStream();
-      // Buffer space for 4 response messages. More are hardly needed I'd
-      // think.
-      BufferedInputStream buf_in = new BufferedInputStream (sock_in, 128);
-      in = new ResponseInputStream (buf_in, this);
-    } catch (IOException ex) {
-      handle_exception (ex);
-    }
+    // Create buffered response input stream.
+    InputStream sock_in = socket.getInputStream();
+    // Buffer space for 4 response messages. More are hardly needed I'd
+    // think.
+    BufferedInputStream buf_in = new BufferedInputStream (sock_in, 128);
+    in = new ResponseInputStream (buf_in, this);
   }
 
   public void flush () {
@@ -1196,7 +1191,12 @@ public class Display {
     }
   }
 
-  protected void handle_exception (Throwable ex) {
-    ex.printStackTrace ();
+  /**
+   * Called by I/O streams to indicate error in communication.
+   * @param requestOutputStream
+   * @param ex
+   */
+  protected void handle_io_exception(Object requestOutputStream, Throwable ex) {
+    ex.printStackTrace();
   }
 }

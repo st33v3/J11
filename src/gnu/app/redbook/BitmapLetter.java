@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -25,7 +27,7 @@ public class BitmapLetter extends gnu.x11.extension.glx.Application {
   };
 
 
-  public BitmapLetter (String [] args) {
+  public BitmapLetter (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "bitmapped letter F",
@@ -61,7 +63,7 @@ public class BitmapLetter extends gnu.x11.extension.glx.Application {
 
 
   // @screenshot gif
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new BitmapLetter (args).exec ();
   }
 }

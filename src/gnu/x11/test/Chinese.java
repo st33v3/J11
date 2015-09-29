@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.Font;
 import gnu.x11.GC;
 
@@ -17,7 +19,7 @@ public class Chinese extends Graphics {
   public GC gc;
 
 
-  public Chinese (String [] args) { 
+  public Chinese (String [] args) throws IOException { 
     super (args, 100, 50);
 
     about ("0.1", "test text output with chinese font",
@@ -48,7 +50,7 @@ public class Chinese extends Graphics {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Chinese (args).exec ();
   }
 }

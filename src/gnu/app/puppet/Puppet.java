@@ -7,6 +7,8 @@ import gnu.x11.Error;           // shadow java.lang.Error
 import gnu.x11.extension.XTest;
 import gnu.x11.extension.NotFoundException;
 import gnu.x11.keysym.Misc;
+
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -347,7 +349,7 @@ public class Puppet extends Application {
   public boolean print_event;
 
 
-  public Puppet (String [] args) throws NotFoundException {
+  public Puppet (String [] args) throws NotFoundException, IOException {
     super (args);
 
     print_event = option.booleann ("print-event",
@@ -1935,7 +1937,7 @@ public class Puppet extends Application {
   }
 
 
-  public static void main (String [] args) throws NotFoundException {
+  public static void main (String [] args) throws NotFoundException, IOException {
     new Puppet (args);
   }
 }

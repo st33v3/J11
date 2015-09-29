@@ -1,5 +1,6 @@
 package gnu.app.displayhack;
 
+import java.io.IOException;
 
 /** 
  * Draw tacky 70s basement wall panelling. It subdivides and colors
@@ -20,7 +21,7 @@ public class Deco extends DisplayHack {
   public int max_depth, min_size;
 
 
-  public Deco (String [] args) { 
+  public Deco (String [] args) throws IOException { 
     super (args, false, false, false, 64, 1000);
 
     max_depth = option.intt ("max-depth", 
@@ -71,7 +72,7 @@ public class Deco extends DisplayHack {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Deco (args).exec (); 
   }
 }

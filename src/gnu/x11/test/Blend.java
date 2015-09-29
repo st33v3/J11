@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.GC;
 import gnu.x11.Pixmap;
 import gnu.x11.extension.render.DrawablePicture;
@@ -28,7 +30,7 @@ public class Blend extends Graphics {
   public Render render;
 
 
-  public Blend (String [] args) throws gnu.x11.extension.NotFoundException {
+  public Blend (String [] args) throws gnu.x11.extension.NotFoundException, IOException {
     super (args, 255, 255);
 
     about ("0.1", "test blending in RENDER",

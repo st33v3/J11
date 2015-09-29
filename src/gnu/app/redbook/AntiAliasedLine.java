@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -20,7 +22,7 @@ public class AntiAliasedLine extends gnu.x11.extension.glx.Application {
   private int rotate_angle;
 
 
-  public AntiAliasedLine (String [] args) {
+  public AntiAliasedLine (String [] args) throws IOException {
     super (args, RESIZE_BIT | KEYBOARD_BIT);
 
     about ("0.1", "anti-aliased lines",
@@ -99,7 +101,7 @@ public class AntiAliasedLine extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new AntiAliasedLine (args).exec ();
   }
 }

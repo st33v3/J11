@@ -1,5 +1,6 @@
 package gnu.x11.test;
 
+import java.io.IOException;
 
 /** 
  * Hello World. Based on {@link Graphics}.
@@ -13,7 +14,7 @@ package gnu.x11.test;
  * @see Hello
  */
 public class Hello2 extends Graphics {
-  public Hello2 (String [] args) {
+  public Hello2 (String [] args) throws IOException {
     super (args, 100, 50);
 
     about ("0.1", "hello world",
@@ -30,7 +31,7 @@ public class Hello2 extends Graphics {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Hello2 (args).exec ();
   }
 }

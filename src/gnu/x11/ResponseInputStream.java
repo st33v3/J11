@@ -58,7 +58,7 @@ public class ResponseInputStream extends FilterInputStream {
   /**
    * Events that have already been read from the stream but not fetched.
    */
-  private LinkedList events = new LinkedList ();
+  private LinkedList<Event> events = new LinkedList<> ();
 
   /**
    * Creates a new ResponseInputStream.
@@ -238,7 +238,7 @@ public class ResponseInputStream extends FilterInputStream {
   }
 
   private void handle_exception (Throwable ex) {
-    ex.printStackTrace();
+    display.handle_io_exception(this, ex);
   }
 
   public Event read_event () {
@@ -275,8 +275,8 @@ public class ResponseInputStream extends FilterInputStream {
    *
    * @return all pending events
    */
-  public List pull_all_events () {
-    LinkedList l = new LinkedList(events);
+  public List<Event> pull_all_events () {
+    LinkedList<Event> l = new LinkedList<>(events);
     Event e = read_event_from_stream ();
     while (e != null) {
       l.add (e);

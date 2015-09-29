@@ -1,6 +1,9 @@
 package gnu.app.redbook;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.util.Misc;
 import gnu.x11.Data;
 
@@ -52,7 +55,7 @@ public class SurfaceTexture extends gnu.x11.extension.glx.Application {
   };
     
 
-  public SurfaceTexture (String [] args) {
+  public SurfaceTexture (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "surface texture",
@@ -138,7 +141,7 @@ public class SurfaceTexture extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new SurfaceTexture (args).exec ();
   }
 }

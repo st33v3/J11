@@ -1,5 +1,6 @@
 package gnu.app.displayhack;
 
+import java.io.IOException;
 
 /**
  * Munching squares. It performs the munching squares hack until killed. It
@@ -32,7 +33,7 @@ public class Munch extends DisplayHack {
   public boolean xor, shift;
 
 
-  public Munch (String [] args) { 
+  public Munch (String [] args) throws IOException { 
     super (args, true, true, false, 16, 2000);
 
     draw_delay = option.longg ("draw-delay", 
@@ -99,7 +100,7 @@ public class Munch extends DisplayHack {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Munch (args).exec (); 
   }
 }

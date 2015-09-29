@@ -1,6 +1,9 @@
 package gnu.app.redbook;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.x11.Input;
 
 
@@ -17,7 +20,7 @@ import gnu.x11.Input;
  * help output</a>
  */
 public class UnProject extends gnu.x11.extension.glx.Application {
-  public UnProject (String [] args) {
+  public UnProject (String [] args) throws IOException {
     super (args, BUTTON_PRESS_BIT | RESIZE_BIT);
 
     about ("0.1", "un-project window coordinates",
@@ -68,7 +71,7 @@ public class UnProject extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new UnProject (args).exec ();
   }
 }

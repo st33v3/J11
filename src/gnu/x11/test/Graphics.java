@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.Window;
 import gnu.x11.event.ClientMessage;
 import gnu.x11.event.Expose;
@@ -14,7 +16,7 @@ public abstract class Graphics extends gnu.x11.Application {
   public Window window;
 
 
-  public Graphics (String [] args, int width, int height) {
+  public Graphics (String [] args, int width, int height) throws IOException {
     super (args);
 
     Window.Attributes win_attr = new Window.Attributes ();

@@ -12,6 +12,8 @@ import gnu.x11.event.ConfigureNotify;
 import gnu.x11.event.Event;
 import gnu.x11.event.Expose;
 import gnu.x11.event.KeyPress;
+
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -51,7 +53,7 @@ public abstract class DisplayHack extends gnu.x11.Application
 
 
   public DisplayHack (String [] args, boolean clear, boolean erase,
-    boolean rainbow_color, int default_color_count, int default_delay) {
+    boolean rainbow_color, int default_color_count, int default_delay) throws IOException {
 
     super (args);
     this.clear = clear;

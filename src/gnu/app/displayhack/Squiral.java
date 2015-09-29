@@ -1,5 +1,6 @@
 package gnu.app.displayhack;
 
+import java.io.IOException;
 
 /** 
  * Square spirals. It displays interacting, spiral-producing automata.
@@ -146,7 +147,7 @@ public class Squiral extends DisplayHack {
   public boolean [] filled, EMPTY_FILLED;
 
 
-  public Squiral (String [] args) { 
+  public Squiral (String [] args) throws IOException { 
     super (args, true, true, false, 100, 2000);
 
     disorder = option.scale ("disorder",
@@ -200,7 +201,7 @@ public class Squiral extends DisplayHack {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Squiral (args).exec ();
   }
 }

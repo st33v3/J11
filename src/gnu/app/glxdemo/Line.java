@@ -1,5 +1,7 @@
 package gnu.app.glxdemo;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 import gnu.x11.keysym.Misc;
 
@@ -34,7 +36,7 @@ public class Line extends gnu.x11.extension.glx.Application {
   private boolean stippling, smoothing;
 
 
-  public Line (String [] args) {
+  public Line (String [] args) throws IOException {
     super (args, KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "line",
@@ -123,7 +125,7 @@ public class Line extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Line (args).exec ();
   }
 }

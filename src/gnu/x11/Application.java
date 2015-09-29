@@ -1,5 +1,6 @@
 package gnu.x11;
 
+import java.io.IOException;
 
 /**
  * X application.
@@ -34,7 +35,7 @@ public class Application extends gnu.app.Application {
   protected Option option;
 
 
-  protected Application (String [] args) {
+  protected Application (String [] args) throws IOException {
     super (args, new Option (args));
 
     // cast `gnu.util.Option option' to `gnu.x11.Option'

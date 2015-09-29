@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -41,7 +43,7 @@ public class ColorLight extends gnu.x11.extension.glx.Application {
     = {1.0f, 1.0f, 1.0f, 1.0f};
 
 
-  public ColorLight (String [] args) {
+  public ColorLight (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "lighting model with color",
@@ -177,7 +179,7 @@ public class ColorLight extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new ColorLight (args).exec ();
   }
 }

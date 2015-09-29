@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -19,7 +21,7 @@ public class Robot extends gnu.x11.extension.glx.Application {
   private int shoulder_angle, elbow_angle;
 
 
-  public Robot (String [] args) {
+  public Robot (String [] args) throws IOException {
     super (args, KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "robot's arm",
@@ -98,7 +100,7 @@ public class Robot extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Robot (args).exec ();
   }
 }

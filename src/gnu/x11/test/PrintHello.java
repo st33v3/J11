@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.GC;
 import gnu.x11.Window;
 import gnu.x11.extension.Print;
@@ -23,7 +25,7 @@ public class PrintHello extends gnu.x11.Application {
 
 
   public PrintHello (String [] args) 
-    throws gnu.x11.extension.NotFoundException {
+    throws gnu.x11.extension.NotFoundException, IOException {
     
     super (args);
 

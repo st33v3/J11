@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 /**
@@ -26,7 +28,7 @@ public class Mipmap extends gnu.x11.extension.glx.Application {
   private static final byte [] IMAGE1 = new byte [1 * 1 * 4];
   
 
-  public Mipmap (String [] args) {
+  public Mipmap (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "mipmap texture",
@@ -162,7 +164,7 @@ public class Mipmap extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Mipmap (args).exec ();
   }
 }

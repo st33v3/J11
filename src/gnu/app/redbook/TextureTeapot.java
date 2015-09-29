@@ -1,6 +1,9 @@
 package gnu.app.redbook;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.x11.Data;
 
 
@@ -37,7 +40,7 @@ public class TextureTeapot extends gnu.x11.extension.glx.Application {
   private float [] texture_coeff = TEXTURE_YZ;
 
 
-  public TextureTeapot (String [] args) {
+  public TextureTeapot (String [] args) throws IOException {
     super (args, KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "texture map teapot",
@@ -165,7 +168,7 @@ public class TextureTeapot extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new TextureTeapot (args).exec ();
   }
 }

@@ -3,7 +3,6 @@ package gnu.x11;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -133,31 +132,26 @@ public class XAuthority {
    * whatever is specified in the environment variable $XAUTHORITY.
    *
    * @return the current Xauthority entries
+   * @throws IOException 
    */
-  public static XAuthority[] get_authorities () {
+  public static XAuthority[] get_authorities () throws IOException {
     String auth_filename = System.getenv ("XAUTHORITY");
-    if (auth_filename == null || auth_filename.equals (""))
-      auth_filename = System.getProperty ("user.home") + File.separatorChar
-                      + ".Xauthority";
-    File auth_file = new File (auth_filename);
-    ArrayList authorities = new ArrayList ();
-    FileInputStream in;
-    try {
-      in = new FileInputStream (auth_file);
-      while (bytes_read != -1) {
-        XAuthority xauth = new XAuthority (in);
-        if (xauth.type != TYPE_EOF)
-          authorities.add (xauth);
-      }
-      in.close ();
-    } catch (FileNotFoundException ex) {
-      System.err.println ("Can't find Xauthority file: " + auth_filename);
-    } catch (IOException ex) {
-      System.err.println ("unexpected problem while reading Xauthority file");
+    if (auth_filename == null || auth_filename.equals ("")) {
+      auth_filename = System.getProperty ("user.home") + File.separatorChar + ".Xauthority";
     }
-
-    return (XAuthority[]) authorities.toArray
-                                         (new XAuthority[authorities.size ()]);
+    ArrayList<XAuthority> authorities = new ArrayList<>();
+    File auth_file = new File (auth_filename);
+    if (auth_file.exists()) {
+      try (FileInputStream in = new FileInputStream (auth_file)) {
+        while (bytes_read != -1) {
+          XAuthority xauth = new XAuthority (in);
+          if (xauth.type != TYPE_EOF) authorities.add (xauth);
+        }
+      }
+    } else {
+    	System.err.println("Waning: missing .Xauthority file ("+auth_filename+")");
+    }
+    return authorities.toArray(new XAuthority[authorities.size ()]);
   }
 
   public String toString () {

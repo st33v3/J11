@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -23,7 +25,7 @@ public class NonRectangular extends gnu.x11.extension.glx.Application {
   private static final float [] LIGHT_POSITION = {1.0f, 1.0f, 1.0f, 0.0f};
 
 
-  public NonRectangular (String [] args) {
+  public NonRectangular (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "mask non-rectangular region",
@@ -142,7 +144,7 @@ public class NonRectangular extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new NonRectangular (args).exec ();
   }
 }

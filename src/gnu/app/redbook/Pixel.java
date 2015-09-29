@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -25,7 +27,7 @@ public class Pixel extends gnu.x11.extension.glx.Application {
   private float zoom_factor = 1.0f;
 
 
-  public Pixel (String [] args) {
+  public Pixel (String [] args) throws IOException {
     super (args, BUTTON1_MOTION_BIT | KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "pixel operations",
@@ -101,7 +103,7 @@ public class Pixel extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Pixel (args).exec ();
   }
 }

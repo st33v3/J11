@@ -1,5 +1,7 @@
 package gnu.app;
 
+import java.io.IOException;
+
 import gnu.x11.Window;
 
 
@@ -28,7 +30,7 @@ public class WinOp extends gnu.x11.Application {
   Window window;
 
 
-  public WinOp (String [] args) {
+  public WinOp (String [] args) throws IOException {
     super (args);
 
     int window_id = option.intt ("window-id",
@@ -94,7 +96,7 @@ public class WinOp extends gnu.x11.Application {
   }
 
 
-  public static void main (String args []) {
+  public static void main (String args []) throws IOException {
     new WinOp (args);
   }
 }

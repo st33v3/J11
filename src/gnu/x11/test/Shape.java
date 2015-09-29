@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.GC;
 import gnu.x11.Pixmap;
 import gnu.x11.image.XBM;
@@ -33,7 +35,7 @@ public class Shape extends Graphics {
   };
 
 
-  public Shape (String [] args) throws gnu.x11.extension.NotFoundException {
+  public Shape (String [] args) throws gnu.x11.extension.NotFoundException, IOException {
     super (args, 32, 32); 
 
     about ("0.1", "test nonrectangular window extension",

@@ -3,6 +3,8 @@ package gnu.x11.test;
 import gnu.x11.event.ClientMessage;
 import gnu.x11.event.Expose;
 import gnu.x11.event.KeyPress;
+
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -23,7 +25,7 @@ public class Sync extends Graphics implements Runnable {
   public Thread thread = new Thread (this, "paint");
 
 
-  public Sync (String [] args) { 
+  public Sync (String [] args) throws IOException { 
     super (args, 256, 256);
 
     about ("0.1", "test multi-threading and synchronization",
@@ -98,7 +100,7 @@ public class Sync extends Graphics implements Runnable {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Sync (args).exec ();
   }
 }

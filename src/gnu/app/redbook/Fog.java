@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -37,7 +39,7 @@ public class Fog extends gnu.x11.extension.glx.Application {
     = {0.727811f, 0.626959f, 0.626959f, 0.0f};
 
 
-  public Fog (String [] args) {
+  public Fog (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "fogged spheres",
@@ -145,7 +147,7 @@ public class Fog extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Fog (args).exec ();
   }
 }

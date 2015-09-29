@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.Drawable;
 import gnu.x11.Point;
 
@@ -14,7 +16,7 @@ import gnu.x11.Point;
  * help output</a>
  */
 public class Polygon extends Graphics {
-  public Polygon (String [] args) { 
+  public Polygon (String [] args) throws IOException { 
     super (args, 256, 256);
 
     about ("0.1", "test polygon drawings",
@@ -47,7 +49,7 @@ public class Polygon extends Graphics {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Polygon (args).exec ();
   }
 }

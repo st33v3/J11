@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -21,7 +23,7 @@ public class BezierCurve extends gnu.x11.extension.glx.Application {
   };
 
 
-  public BezierCurve (String [] args) {
+  public BezierCurve (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "bezier curve",
@@ -78,7 +80,7 @@ public class BezierCurve extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new BezierCurve (args).exec ();
   }
 }

@@ -1,5 +1,6 @@
 package gnu.x11.test;
 
+import java.io.IOException;
 import java.util.Random;
 
 
@@ -21,7 +22,7 @@ public class DBE extends Graphics {
   public static final Random random = new Random ();
 
 
-  public DBE (String [] args) throws gnu.x11.extension.NotFoundException {
+  public DBE (String [] args) throws gnu.x11.extension.NotFoundException, IOException {
     super (args, 256, 256); 
     
     about ("0.1", "test double buffer extension",

@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -15,7 +17,7 @@ import gnu.x11.extension.glx.GL;
  * help output</a>
  */
 public class Cube extends gnu.x11.extension.glx.Application {
-  public Cube (String [] args) {
+  public Cube (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "wireframe cube",
@@ -50,7 +52,7 @@ public class Cube extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Cube (args).exec ();
   }
 }

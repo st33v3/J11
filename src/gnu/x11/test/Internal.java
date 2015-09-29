@@ -1,7 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
 import gnu.x11.Cursor;
-import gnu.x11.extension.XCMisc;
 
 
 /**
@@ -14,7 +14,7 @@ import gnu.x11.extension.XCMisc;
  * help output</a>
  */
 public class Internal extends gnu.x11.Application {
-  public Internal (String [] args) { 
+  public Internal (String [] args) throws IOException { 
     super (args);
 
     about ("0.1", "test internal workings of the library",
@@ -41,7 +41,7 @@ public class Internal extends gnu.x11.Application {
   }
 
 
-  public static void main (String [] args) { 
+  public static void main (String [] args) throws IOException { 
     new Internal (args);
   }
 }

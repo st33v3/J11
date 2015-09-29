@@ -1,5 +1,7 @@
 package gnu.app.glxdemo;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 import gnu.x11.keysym.Misc;
 
@@ -36,7 +38,7 @@ public class Point extends gnu.x11.extension.glx.Application {
   private boolean smoothing;
 
 
-  public Point (String [] args) {
+  public Point (String [] args) throws IOException {
     super (args, KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "point",
@@ -121,7 +123,7 @@ public class Point extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Point (args).exec ();
   }
 }

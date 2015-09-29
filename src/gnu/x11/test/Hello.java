@@ -1,5 +1,7 @@
 package gnu.x11.test;
 
+import java.io.IOException;
+
 import gnu.x11.Window;
 import gnu.x11.event.ClientMessage;
 import gnu.x11.event.Expose;
@@ -22,7 +24,7 @@ import gnu.x11.event.KeyPress;
  * @see Hello2
  */
 public class Hello extends gnu.x11.Application {
-  public Hello (String [] args) {
+  public Hello (String [] args) throws IOException {
     super (args);
 
     about ("0.1", "hello world",
@@ -82,7 +84,7 @@ public class Hello extends gnu.x11.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Hello (args);
   }
 }

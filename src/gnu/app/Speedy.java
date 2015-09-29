@@ -9,10 +9,11 @@
 
 package gnu.app;
 
+import java.io.IOException;
+
 import gnu.x11.Display;
 import gnu.x11.GC;
 import gnu.x11.Window;
-import java.net.SocketException;
 
 /**
  * A simplistic benchmark for raw rendering throughput.
@@ -41,8 +42,9 @@ public class Speedy extends gnu.app.Application {
    */
   private int iterations;
 
-  /** Creates a new instance of Speedy */
-  public Speedy (String[] args) {
+  /** Creates a new instance of Speedy 
+ * @throws IOException */
+  public Speedy (String[] args) throws IOException {
     super (args);
 
     iterations = option.intt ("iterations",
@@ -151,8 +153,9 @@ public class Speedy extends gnu.app.Application {
 
   /**
    * Starts the program.
+ * @throws IOException 
    */
-  public static void main (String[] args) {
+  public static void main (String[] args) throws IOException {
     new Speedy(args);
   }
 }

@@ -1,6 +1,9 @@
 package gnu.app.glxdemo;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.x11.Data;
 
 
@@ -21,7 +24,7 @@ public class ABGR extends gnu.x11.extension.glx.Application {
   private static final byte [] IMAGE0 = new byte [IMAGE_SIZE * IMAGE_SIZE * 4];
 
 
-  public ABGR (String [] args) {
+  public ABGR (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "abgr extension",
@@ -123,7 +126,7 @@ public class ABGR extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new ABGR (args).exec ();
   }
 }

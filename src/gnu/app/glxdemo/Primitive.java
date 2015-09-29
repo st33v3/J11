@@ -1,5 +1,7 @@
 package gnu.app.glxdemo;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -77,7 +79,7 @@ public class Primitive extends gnu.x11.extension.glx.Application {
   int [] [] vertex_position = new int [8] [2];
 
 
-  public Primitive (String [] args) {
+  public Primitive (String [] args) throws IOException {
     super (args, KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "primitive shapes",
@@ -497,7 +499,7 @@ public class Primitive extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Primitive (args).exec ();
   }
 }

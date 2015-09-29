@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -85,7 +87,7 @@ public class PolygonStipple extends gnu.x11.extension.glx.Application {
   };
 
   
-  public PolygonStipple (String [] args) {
+  public PolygonStipple (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "polygon stipple",
@@ -122,7 +124,7 @@ public class PolygonStipple extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new PolygonStipple (args).exec ();
   }
 }

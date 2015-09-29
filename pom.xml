@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.labri</groupId>
   <artifactId>J11</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -20,6 +20,9 @@
         <configuration>
           <source/>
           <target/>
+          <archive>
+            <manifestFile>META-INF/MANIFEST.MF</manifestFile>
+          </archive>
         </configuration>
       </plugin>
     </plugins>

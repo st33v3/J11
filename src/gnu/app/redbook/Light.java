@@ -1,5 +1,7 @@
 package gnu.app.redbook;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 
 
@@ -26,7 +28,7 @@ public class Light extends gnu.x11.extension.glx.Application {
     = {0.5f, 0.5f, 0.5f, 1.0f};
 
 
-  public Light (String [] args) {
+  public Light (String [] args) throws IOException {
     super (args, RESIZE_BIT);
 
     about ("0.1", "lighting model",
@@ -82,7 +84,7 @@ public class Light extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Light (args).exec ();
   }
 }

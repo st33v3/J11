@@ -1,6 +1,9 @@
 package gnu.app.redbook;
 
 import gnu.x11.extension.glx.GL;
+
+import java.io.IOException;
+
 import gnu.x11.Input;
 
 
@@ -21,7 +24,7 @@ public class DoubleBuffer extends gnu.x11.extension.glx.Application implements R
   private Thread thread = new Thread (this, "spin");
 
 
-  public DoubleBuffer (String [] args) {
+  public DoubleBuffer (String [] args) throws IOException {
     super (args, BUTTON_PRESS_BIT | KEYBOARD_BIT | RESIZE_BIT);
 
     about ("0.1", "double buffer",
@@ -100,7 +103,7 @@ public class DoubleBuffer extends gnu.x11.extension.glx.Application implements R
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new DoubleBuffer (args).exec ();
   }
 }

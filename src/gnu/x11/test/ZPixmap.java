@@ -1,5 +1,6 @@
 package gnu.x11.test;
 
+import java.io.IOException;
 
 /**
  * Test ZPixmap pixel manipulation. 
@@ -14,7 +15,7 @@ public class ZPixmap extends Graphics {
   gnu.x11.image.ZPixmap zpixmap;
 
 
-  public ZPixmap (String [] args) { 
+  public ZPixmap (String [] args) throws IOException { 
     super (args, 256, 256); 
 
     about ("0.1", "test zpixmap pixel manipulation",
@@ -44,7 +45,7 @@ public class ZPixmap extends Graphics {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new ZPixmap (args).exec ();
   }
 }

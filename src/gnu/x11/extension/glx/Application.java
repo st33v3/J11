@@ -1,5 +1,7 @@
 package gnu.x11.extension.glx;
 
+import java.io.IOException;
+
 import gnu.x11.Colormap;
 import gnu.x11.Window;
 import gnu.x11.event.ButtonPress;
@@ -50,7 +52,7 @@ public abstract class Application extends gnu.x11.Application {
   protected boolean window_dirty;
 
 
-  protected Application (String [] args, int event_mask) {
+  protected Application (String [] args, int event_mask) throws IOException {
     super (args);
     this.event_mask = event_mask;
 

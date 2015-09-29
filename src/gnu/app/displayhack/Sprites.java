@@ -1,5 +1,7 @@
 package gnu.app.displayhack;
 
+import java.io.IOException;
+
 import gnu.x11.GC;
 import gnu.x11.Pixmap;
 import gnu.x11.extension.render.DrawablePicture;
@@ -102,7 +104,7 @@ public class Sprites extends DisplayHack {
   }
 
   
-  public Sprites (String [] args) throws gnu.x11.extension.NotFoundException { 
+  public Sprites (String [] args) throws gnu.x11.extension.NotFoundException, IOException { 
     super (args, false, false, false, 64, 1000);
 
     about ("0.1", "moving sprites to blend colors",

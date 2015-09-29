@@ -1,5 +1,7 @@
 package gnu.app.glxdemo;
 
+import java.io.IOException;
+
 import gnu.x11.extension.glx.GL;
 import gnu.x11.keysym.Misc;
 
@@ -66,7 +68,7 @@ public class Triangle extends gnu.x11.extension.glx.Application {
   private float z_angle = 90.0f;  
 
 
-  public Triangle (String [] args) {
+  public Triangle (String [] args) throws IOException {
     super (args, KEYBOARD_BIT);
 
     about ("0.1", "triangle",
@@ -301,7 +303,7 @@ public class Triangle extends gnu.x11.extension.glx.Application {
   }
 
 
-  public static void main (String [] args) {
+  public static void main (String [] args) throws IOException {
     new Triangle (args).exec ();
   }
 }
