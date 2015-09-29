@@ -1196,7 +1196,7 @@ public class Display {
     }
   }
 
-  private void handle_exception (Throwable ex) {
+  protected void handle_exception (Throwable ex) {
     ex.printStackTrace ();
   }
 }
