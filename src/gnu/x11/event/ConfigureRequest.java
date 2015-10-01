@@ -10,17 +10,17 @@ import gnu.x11.Window;
 public final class ConfigureRequest extends Event {
   public static final int CODE = 23;
 
-  public int parent_window_id;
-  public int window_id;
-  public int sibling_id;
+  public final int parent_window_id;
+  public final int window_id;
+  public final int sibling_id;
 
-  public int x;
-  public int y;
-  public int width;
-  public int height;
+  public final int x;
+  public final int y;
+  public final int width;
+  public final int height;
 
-  public int border_width;
-  public int value_mask;
+  public final int border_width;
+  public final int value_mask;
 
 
   public ConfigureRequest (Display display, ResponseInputStream in) {
@@ -88,8 +88,25 @@ public final class ConfigureRequest extends Event {
     return value_mask;
   }
 
-
   public Rectangle rectangle () {
     return new Rectangle (x (), y (), width (), height ());
   }
+
+
+  @Override
+  public String toString() {
+    return super.toString() + 
+	  "[parent_window_id=" + parent_window_id +
+      ", window_id=" + window_id +
+	  ", sibling_id="	+ sibling_id +
+	  ", x=" + x +
+	  ", y=" + y +
+	  ", width=" + width +
+	  ", height=" + height +
+	  ", border_width=" + border_width +
+	  ", value_mask=" + value_mask +
+	  "]";
+ }
+  
+  
 }

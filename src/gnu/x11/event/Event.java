@@ -90,8 +90,7 @@ public abstract class Event {
   }
 
   public String toString () {
-    String class_name = "#" + getClass ().getName ();
-    return class_name + " " + code ();
+    return "#" + code() + " - " + getClass ().getSimpleName();
   }
 
   /**

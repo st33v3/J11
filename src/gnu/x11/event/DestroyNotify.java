@@ -6,10 +6,11 @@ import gnu.x11.ResponseInputStream;
 
 /** X destroy notify event. */
 public final class DestroyNotify extends Event {
+	
   public static final int CODE = 17;
 
-  public int event_window_id;
-  public int window_id;
+  public final int event_window_id;
+  public final int window_id;
 
   public DestroyNotify (Display display, ResponseInputStream in) {
     super (display, in);
@@ -18,4 +19,10 @@ public final class DestroyNotify extends Event {
     in.skip (20);
   }
 
+@Override
+public String toString() {
+	return super.toString() + "[wid=" + window_id + ", event_wid=" + event_window_id + "]";
+}
+
+  
 }

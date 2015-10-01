@@ -1196,7 +1196,7 @@ public class Display {
    * @param requestOutputStream
    * @param ex
    */
-  protected void handle_io_exception(Object requestOutputStream, Throwable ex) {
+  protected void handle_io_exception(Object stream, Throwable ex) {
     ex.printStackTrace();
   }
 }

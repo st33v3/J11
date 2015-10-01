@@ -6,11 +6,12 @@ import gnu.x11.ResponseInputStream;
 
 /** X map notify event. */
 public final class MapNotify extends Event {
-  public static final int CODE = 19;
+  
+	public static final int CODE = 19;
 
-  public int event_window_id;
-  public int window_id;
-  public boolean override_redirect;
+  public final int event_window_id;
+  public final int window_id;
+  public final boolean override_redirect;
 
   public MapNotify (Display display, ResponseInputStream in) {
     super (display, in);
@@ -19,4 +20,15 @@ public final class MapNotify extends Event {
     override_redirect = in.read_bool ();
     in.skip (19);
   }
+
+@Override
+public String toString() {
+	return super.toString() + 
+			"[event_window_id=" + event_window_id +
+			", window_id=" + window_id +
+			", override_redirect=" + override_redirect +
+			"]";
+}
+  
+  
 }

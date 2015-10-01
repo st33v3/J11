@@ -6,17 +6,18 @@ import gnu.x11.ResponseInputStream;
 
 /** X create notify event. */
 public final class CreateNotify extends Event {
-  public static final int CODE = 16;
+  
+	public static final int CODE = 16;
 
 
-  public int parent_id;
-  public int window_id;
-  public int x;
-  public int y;
-  public int width;
-  public int height;
-  public int border_width;
-  public boolean override_redirect;
+  public final int parent_id;
+  public final int window_id;
+  public final int x;
+  public final int y;
+  public final int width;
+  public final int height;
+  public final int border_width;
+  public final boolean override_redirect;
 
   public CreateNotify (Display display, ResponseInputStream in) {
     super (display, in); 
@@ -31,4 +32,19 @@ public final class CreateNotify extends Event {
     in.skip (9);
   }
 
+@Override
+public String toString() {
+	return super.toString() + 
+			"[parent_id=" + parent_id +
+			", window_id=" + window_id +
+			", x=" + x +
+			", y=" + y +
+			", width=" + width +
+			", height=" + height +
+			", border_width=" + border_width +
+			", override_redirect=" + override_redirect +
+			"]";
+}
+
+  
 }

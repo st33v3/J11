@@ -7,12 +7,13 @@ import gnu.x11.ResponseInputStream;
 
 /** X client message event. */
 public final class ClientMessage extends Event {
-  public static final int CODE = 33;
+  
+	public static final int CODE = 33;
 
 
-  public int window_id;
-  public int type_atom_id;
-  public byte[] data;
+  public final int window_id;
+  public final int type_atom_id;
+  public final byte[] data;
 
   /** Reading. */
   public ClientMessage (Display display, ResponseInputStream in) {

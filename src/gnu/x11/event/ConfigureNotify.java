@@ -9,17 +9,17 @@ import gnu.x11.ResponseInputStream;
 public final class ConfigureNotify extends Event {
   public static final int CODE = 22;
 
-  public int event_window_id;
-  public int window_id;
-  public int above_sibling_id;
+  public final int event_window_id;
+  public final int window_id;
+  public final int above_sibling_id;
 
-  public int x;
-  public int y;
-  public int width;
-  public int height;
+  public final int x;
+  public final int y;
+  public final int width;
+  public final int height;
 
-  public int border_width;
-  public boolean override_redirect;
+  public final int border_width;
+  public final boolean override_redirect;
 
   /** Reading. */
   public ConfigureNotify (Display display, ResponseInputStream in) {
@@ -67,4 +67,21 @@ public final class ConfigureNotify extends Event {
     return new Rectangle (x (), y (), width (), height ());
   }
 
+
+@Override
+public String toString() {
+	return super.toString() + 
+			"[event_window_id=" + event_window_id +
+			", window_id=" + window_id +
+			", above_sibling_id=" + above_sibling_id +
+			", x=" + x +
+			", y=" + y +
+			", width=" + width +
+			", height=" + height +
+			", border_width=" + border_width +
+			", override_redirect=" + override_redirect +
+			"]";
+}
+
+  
 }

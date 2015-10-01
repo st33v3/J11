@@ -9,10 +9,10 @@ public final class ColormapNotify extends Event {
   public static final int CODE = 32;
 
 
-  public int window_id;
-  public int colormap_id;
-  public boolean is_new;
-  public int state;
+  public final int window_id;
+  public final int colormap_id;
+  public final boolean is_new;
+  public final int state;
 
   public ColormapNotify (Display display, ResponseInputStream in) {
     super (display, in);
@@ -23,4 +23,15 @@ public final class ColormapNotify extends Event {
     in.skip (18);
   }
 
+@Override
+public String toString() {
+	return super.toString() + 
+			"[window_id=" + window_id +
+			", colormap_id=" + colormap_id +
+			", is_new=" + is_new +
+			", state=" + state +
+			"]";
+}
+
+  
 }
