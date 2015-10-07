@@ -44,12 +44,12 @@ public class Colormap extends Resource {
    * if alloc is <code>NONE</code> the colormap initially has no allocated
    * entries, and clients can allocate entries. If alloc is <code>ALL</code>,
    * then the entire colormap is allocated writable. The initial values of all
-   * allocated entries are undeﬁned. For GrayScale and PseudoColor, the effect
+   * allocated entries are undefined. For GrayScale and PseudoColor, the effect
    * is as if an AllocColorCells request returned all pixel values from zero to
-   * N − 1, where N is the colormap-entries value in the speciﬁed visual.
+   * N − 1, where N is the colormap-entries value in the specified visual.
    * For DirectColor, the effect is as if an AllocColorPlanes request returned
    * a pixel value of zero and red-mask, green-mask, and blue-mask values
-   * containing the same bits as the corresponding masks in the speciﬁed
+   * containing the same bits as the corresponding masks in the specified
    * visual. However, in all cases, none of these entries can be freed with
    * FreeColors.
    *
