@@ -1,6 +1,7 @@
 package gnu.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Vector;
@@ -214,9 +215,13 @@ public class ReloadableClassLoader extends ClassLoader {
     byte [] data = new byte [(int) file.length ()];
 
     try {
-      new java.io.FileInputStream (file).read (data);
-      return data;
-
+      FileInputStream stream = new java.io.FileInputStream (file);
+      try {
+    	  stream.read(data);
+    	  return data;
+      } finally {
+    	  stream.close();
+      }
     } catch (java.io.IOException e) {
       return null;
     }

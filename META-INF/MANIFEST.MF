@@ -19,3 +19,4 @@ Export-Package: gnu,
  gnu.x11.image,
  gnu.x11.keysym,
  gnu.x11.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
